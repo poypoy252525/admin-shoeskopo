@@ -7,11 +7,13 @@ const apiClient = new APIClient("/login-admin.php");
 
 const useLogin = () => {
   const navigate = useNavigate();
-  return useMutation<Customer, AxiosError, CustomerLogin>({
-    mutationFn: (customerLogin: CustomerLogin) =>
-      apiClient.post<CustomerLogin>(customerLogin),
+  return useMutation<Customer, AxiosError, AdminLogin>({
+    mutationFn: (customerLogin: AdminLogin) =>
+      apiClient.post<AdminLogin>(customerLogin),
     onSuccess: (data) => {
-      if (data.email) {
+      console.log(data);
+
+      if (data.username) {
         var userStr = JSON.stringify(data);
         localStorage.setItem("auth", userStr);
         navigate("/");

@@ -12,9 +12,9 @@ import { useForm } from "react-hook-form";
 import useLogin from "../hooks/useLogin";
 
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm<CustomerLogin>();
+  const { register, handleSubmit } = useForm<AdminLogin>();
   const { mutate } = useLogin();
-  const onSubmit = (user: CustomerLogin) => {
+  const onSubmit = (user: AdminLogin) => {
     mutate(user);
   };
   return (
@@ -33,11 +33,9 @@ const LoginPage = () => {
                 placeholder="Password"
                 type="password"
               />
-              {/* <Link to="/"> */}
               <Button colorScheme="red" size="sm" type="submit">
                 Login
               </Button>
-              {/* </Link> */}
             </VStack>
           </CardBody>
         </Card>
