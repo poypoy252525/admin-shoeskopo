@@ -151,11 +151,15 @@ const AddProductPage = () => {
                       label="Brand"
                       register={register("brand")}
                     />
-                    <CustomFormControlSelect
-                      items={["Blue", "Red", "Black", "Pink"]}
-                      label="Color"
-                      register={register("color")}
-                    />
+                    <FormControl isRequired>
+                      <FormLabel>Color</FormLabel>
+                      <Input
+                        type="text"
+                        placeholder="Write color here..."
+                        fontSize="small"
+                        {...register("color")}
+                      />
+                    </FormControl>
                   </VStack>
                 </CardBody>
               </Card>

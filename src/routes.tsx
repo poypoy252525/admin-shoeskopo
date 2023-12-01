@@ -4,9 +4,11 @@ import AddProductPage from "./pages/AddProductPage";
 import DashboardPage from "./pages/DashboardPage";
 import InventoryPage from "./pages/InventoryPage";
 import ProductsPage from "./pages/ProductsPage";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/home" /> },
+  { path: "/login", element: <LoginPage /> },
   {
     path: "/",
     element: <App />,
