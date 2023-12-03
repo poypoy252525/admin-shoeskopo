@@ -39,7 +39,7 @@ const UpdateProductPage = () => {
   const { mutate } = useUpdateProduct();
 
   useEffect(() => {
-    setValue("price", product?.price || -1);
+    setValue("price", product?.price || "-1");
     setValue("color", product?.color || "NaN");
   }, [product?.price, product?.color]);
   return (

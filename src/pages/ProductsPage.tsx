@@ -6,9 +6,8 @@ import {
   Box,
   HStack,
   Button,
-  Table,
   TableCaption,
-  TableContainer,
+  Text,
   Tbody,
   Td,
   Th,
@@ -99,7 +98,9 @@ const ProductsPage = () => {
                 {product.color}
               </Td>
               <Td fontSize="small" color="gray.500" isNumeric>
-                {product.price}
+                <Text color="teal" fontWeight="bold">
+                  ₱{parseFloat(product.price).toLocaleString()}
+                </Text>
               </Td>
               <Td>
                 <HStack spacing={2}>
