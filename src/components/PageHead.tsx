@@ -3,7 +3,7 @@ import CustomBreadcrumb from "./CustomBreadcrumb";
 import { ReactNode } from "react";
 
 interface Props {
-  breadcrumbItems: BreadcrumbItem[];
+  breadcrumbItems?: BreadcrumbItem[];
   title: string;
   subtext?: string;
   rightItem?: ReactNode;
@@ -12,7 +12,8 @@ interface Props {
 const PageHead = ({ breadcrumbItems, title, subtext, rightItem }: Props) => {
   return (
     <>
-      <CustomBreadcrumb items={breadcrumbItems} />
+      {breadcrumbItems && <CustomBreadcrumb items={breadcrumbItems} />}
+
       <Flex justifyContent="space-between">
         <Box>
           <Heading size="lg">{title}</Heading>

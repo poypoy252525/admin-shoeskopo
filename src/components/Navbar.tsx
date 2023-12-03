@@ -1,4 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
+import ProfilePopover from "./ProfilePopover";
 
 const Navbar = () => {
   return (
@@ -17,6 +18,7 @@ const Navbar = () => {
         px={5}
       >
         <Heading size="md">Shoes ko po!</Heading>
+        <ProfilePopover />
       </Flex>
     </>
   );

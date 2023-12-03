@@ -1,6 +1,7 @@
 import { AddIcon } from "@chakra-ui/icons";
 import { Box, VStack, Button } from "@chakra-ui/react";
-import { MdInventory, MdOutlineDashboard } from "react-icons/md";
+import { MdOutlineDashboard } from "react-icons/md";
+import { CiShoppingCart } from "react-icons/ci";
 import { GiRunningShoe } from "react-icons/gi";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -11,7 +12,7 @@ const Sidebar = () => {
     { label: "Dashboard", icon: <MdOutlineDashboard />, path: "/home" },
     { label: "Products", icon: <GiRunningShoe />, path: "/products" },
     { label: "Add Product", icon: <AddIcon />, path: "/products/addproduct" },
-    { label: "Inventory", icon: <MdInventory />, path: "/inventory" },
+    { label: "Orders", icon: <CiShoppingCart />, path: "/orders" },
   ];
 
   return (

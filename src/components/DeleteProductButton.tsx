@@ -24,6 +24,7 @@ const DeleteProductButton = ({ product }: Props) => {
   return (
     <>
       <Button
+        size="sm"
         colorScheme="red"
         variant="outline"
         fontSize="small"
