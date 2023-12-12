@@ -1,5 +1,5 @@
 import { FormControl, FormLabel, Select } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   placeholder?: string;
   register: UseFormRegisterReturn;
   defaultValue?: string;
-  setValue?: () => void;
+  setValue?: (value: string | undefined) => void;
 }
 
 const CustomFormControlSelect = ({
@@ -19,17 +19,29 @@ const CustomFormControlSelect = ({
   defaultValue,
   setValue,
 }: Props) => {
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    defaultValue
+  );
+
   useEffect(() => {
-    setValue && setValue();
+    // Update selectedValue when defaultValue changes
+    setSelectedValue(defaultValue);
   }, [defaultValue]);
+
+  useEffect(() => {
+    // Call setValue with the updated selectedValue
+    setValue && setValue(selectedValue);
+  }, [selectedValue, setValue]);
+
   return (
     <FormControl isRequired>
       <FormLabel>{label}</FormLabel>
       <Select
-        defaultValue={defaultValue}
+        value={selectedValue}
         placeholder={placeholder}
         fontSize="small"
         {...register}
+        onChange={(e) => setSelectedValue(e.target.value)}
       >
         {items.map((item, index) => (
           <option key={index} value={item}>

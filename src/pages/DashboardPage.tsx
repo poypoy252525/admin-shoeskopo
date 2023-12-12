@@ -6,13 +6,11 @@ import {
   Box,
   Card,
   CardBody,
-  Flex,
   Grid,
   GridItem,
   HStack,
   Icon,
   Text,
-  VStack,
   Image,
 } from "@chakra-ui/react";
 import { FaUser } from "react-icons/fa";
@@ -20,10 +18,17 @@ import { GiRunningShoe } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaTruckFast } from "react-icons/fa6";
 import graph from "../assets/Screenshot 2023-12-02 154850.png";
+import useCustomers from "../hooks/useCustomers";
+import useProducts from "../hooks/useProducts";
+import useOrders from "../hooks/useOrders";
 
 const DashboardPage = () => {
   const user = useAuth();
   if (!user) return <Navigate to="/login" />;
+
+  const { data: customers } = useCustomers();
+  const { data: products } = useProducts();
+  const { data: orders } = useOrders();
   return (
     <PageWrapper>
       <PageHead title="Dashboard" />
@@ -36,14 +41,9 @@ const DashboardPage = () => {
                   <Icon as={FaUser} color="white" boxSize="68px" />
                   <Box lineHeight="1">
                     <Text fontWeight="bold" fontSize="48px" color="white">
-                      19
+                      {customers?.length}
                     </Text>
-                    <Text
-                      ms={2}
-                      fontWeight="semibold"
-                      color="white"
-                      fontSize="16px"
-                    >
+                    <Text fontWeight="semibold" color="white" fontSize="16px">
                       Users
                     </Text>
                   </Box>
@@ -58,7 +58,7 @@ const DashboardPage = () => {
                   <Icon as={GiRunningShoe} color="white" boxSize="68px" />
                   <Box lineHeight="1">
                     <Text fontWeight="bold" fontSize="48px" color="white">
-                      78
+                      {products?.length}
                     </Text>
                     <Text fontWeight="semibold" color="white" fontSize="16px">
                       Products
@@ -75,7 +75,7 @@ const DashboardPage = () => {
                   <Icon as={FaShoppingCart} color="white" boxSize="68px" />
                   <Box lineHeight="1">
                     <Text fontWeight="bold" fontSize="48px" color="white">
-                      21
+                      {orders?.length}
                     </Text>
                     <Text fontWeight="semibold" color="white" fontSize="16px">
                       Orders
@@ -92,7 +92,10 @@ const DashboardPage = () => {
                   <Icon as={FaTruckFast} color="white" boxSize="68px" />
                   <Box lineHeight="1">
                     <Text fontWeight="bold" fontSize="48px" color="white">
-                      23
+                      {
+                        orders?.filter((order) => order.status === "Shipped")
+                          .length
+                      }
                     </Text>
                     <Text fontWeight="semibold" color="white" fontSize="16px">
                       Shipped

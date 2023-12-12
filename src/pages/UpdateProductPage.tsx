@@ -18,7 +18,6 @@ import PageWrapper from "../components/PageWrapper";
 import CustomFormControlInput from "../components/CustomFormControlInput";
 import CustomFormControlSelect from "../components/CustomFormControlSelect";
 import { useForm } from "react-hook-form";
-import { Product } from "../entities/product";
 import PageHead from "../components/PageHead";
 import { Link, useParams } from "react-router-dom";
 import useProduct from "../hooks/useProduct";
@@ -46,7 +45,6 @@ const UpdateProductPage = () => {
     <form
       onSubmit={handleSubmit((product) => {
         const formData = new FormData();
-
         formData.append("id", id || "NaN");
         formData.append("name", product.name);
         formData.append("description", product.description);

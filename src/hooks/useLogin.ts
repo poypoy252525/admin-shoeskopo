@@ -7,7 +7,7 @@ const apiClient = new APIClient("/login-admin.php");
 
 const useLogin = () => {
   const navigate = useNavigate();
-  return useMutation<Customer, AxiosError, AdminLogin>({
+  return useMutation<Admin, AxiosError, AdminLogin>({
     mutationFn: (customerLogin: AdminLogin) =>
       apiClient.post<AdminLogin>(customerLogin),
     onSuccess: (data) => {
