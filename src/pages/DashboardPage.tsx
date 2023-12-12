@@ -11,16 +11,15 @@ import {
   HStack,
   Icon,
   Text,
-  Image,
 } from "@chakra-ui/react";
 import { FaUser } from "react-icons/fa";
 import { GiRunningShoe } from "react-icons/gi";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaTruckFast } from "react-icons/fa6";
-import graph from "../assets/Screenshot 2023-12-02 154850.png";
 import useCustomers from "../hooks/useCustomers";
 import useProducts from "../hooks/useProducts";
 import useOrders from "../hooks/useOrders";
+import SalesChart from "../components/SalesChart";
 
 const DashboardPage = () => {
   const user = useAuth();
@@ -106,7 +105,11 @@ const DashboardPage = () => {
             </Card>
           </GridItem>
           <GridItem colSpan={4}>
-            <Image w="100%" src={graph} />
+            <Card variant="outline">
+              <CardBody>
+                <SalesChart />
+              </CardBody>
+            </Card>
           </GridItem>
         </Grid>
       </Box>
