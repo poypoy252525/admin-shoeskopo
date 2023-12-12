@@ -6,6 +6,7 @@ import {
   PointElement,
   Tooltip,
   Title,
+  SubTitle,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import useSalesOfTheWeek from "../hooks/useSalesOfTheWeek";
@@ -16,7 +17,8 @@ ChartJS.register(
   LinearScale,
   PointElement,
   Title,
-  Tooltip
+  Tooltip,
+  SubTitle
 );
 
 const SalesChart = () => {
@@ -35,6 +37,22 @@ const SalesChart = () => {
   };
 
   const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Weekly sales",
+        font: {
+          size: 24,
+        },
+      },
+      subtitle: {
+        display: true,
+        text: "Last 7 days",
+        padding: {
+          bottom: 10,
+        },
+      },
+    },
     scales: {
       y: {
         beginAtZero: true,
@@ -46,7 +64,7 @@ const SalesChart = () => {
     },
   };
 
-  return <Line title="Sales chart" data={data} options={options} />;
+  return <Line data={data} options={options} />;
 };
 
 export default SalesChart;

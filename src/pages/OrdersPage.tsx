@@ -103,7 +103,7 @@ const OrdersPage = () => {
                     ))}
                 </Td>
                 <Td py={4} isNumeric>
-                  {order.order_date}
+                  {formatOrderDate(order.order_date)}
                 </Td>
               </Tr>
             ))}
@@ -116,6 +116,22 @@ const OrdersPage = () => {
       )}
     </>
   );
+};
+
+const formatOrderDate = (orderDateStr: string) => {
+  const orderDate = new Date(orderDateStr);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  return new Intl.DateTimeFormat(
+    "en-US",
+    options as Intl.DateTimeFormatOptions
+  ).format(orderDate);
 };
 
 export default OrdersPage;
